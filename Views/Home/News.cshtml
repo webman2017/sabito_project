@@ -1,0 +1,423 @@
+@{
+    ViewData["Title"] = "";
+}
+<h1>@ViewData["Title"]</h1>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/customs.css">
+    <link rel="stylesheet" href="~/fonts/stylesheet.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="~/css/splide.min.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+   <div class="jumbotron jumbotron-fluid banner-page " style="">
+            <img class="" src="~/images/banner_mini.png" alt="">
+            <div class="container">
+                <h1 class="display-4">ข่าวสารและโปรโมชั่น</h1>
+                <p class="lead">NEWS AND PROMOTION</p>
+            </div>
+        </div>
+
+
+
+
+
+     <div class="modal fade" id="modaltool3" tabindex="-1" role="dialog" aria-labelledby="modaltool3Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modaltool3Label">คำนวณค่าคอมมิชชั่น</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div role="form" class="form-container cal_detail mt-3">
+                                              
+                        <p>ซื้อ/ขายหุ้น (บาท)</p>
+                        <!--<input id="txtBuy" type="text" onchange="calCommision();" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');this.onchange();" />-->
+                        <input id="txtBuy" type="text" class="number"><br><br>
+                
+                        <label style="font-size:94.5%">ค่าคอมมิชชั่น *</label><br>
+                        <label><span id="lblCom"></span></label><br>
+                
+                
+                        <label style="font-size:94.5%">
+                
+                            ค่าธรรมเนียมตลาดฯ และ กำกับดูแล (0.007%)
+                        </label><br>
+                        <label><span id="lblFee"></span></label><br>
+                
+                        <label style="font-size:94.5%">
+                            <label style="font-size:94.5%">ภาษีมูลค่าเพิ่ม (7%)</label>
+                
+                        </label><br>
+                        <label><span id="lblTax"></span></label><br>
+                
+                        <label><span id="lblSum"></span></label><br>
+                        <label><span style="color:red;font-size:94.5%">*ค่าคอมมิชชั่นที่ใช้คำนวณ เป็นค่าคอมมิชชั่นของบัญชีประเภท Cash Balance และ Credit Balance</span></label>
+                      <div class="btn-footer">
+                        <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+
+                      </div>
+                
+                    </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        <div class="ourservice mb-5">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-xl-3 col-md-3 col-sm-3">
+                        <section class="pull-right d-none d-md-block">
+                            <ul class="sidebar-menu">
+                                <li>
+                                    &nbsp;
+                                </li>
+                                <li class="active">
+                                    <a href="#">
+                                        <span>หุ้น</span>
+                                        <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li class="active">
+                                            <a href="ours_CashBalance.php"> Cash Balance <i class="fa  fa-caret-right pull-right"></i></a>
+                                            <ul class="sidebar-submenu menu-open">
+                                                <li><a href="ours_CashBalance.php">Commision เทียบกับตลาด</a></li>
+                                                <li><a href="commission_cal1.php">เครื่องคิดเลขคำนวณค่าคอมฯ</a></li>
+                                                <li><a href="howtoopenacc.php">วิธีการเปิด / เอกสารที่ต้องใช้</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Cash Account<i class="fa  fa-caret-right pull-right"></i></a>
+                                            <ul class="sidebar-submenu">
+                                                <li><a href="ours_CashAccount.php">Commision เทียบกับตลาด</a></li>
+                                                <li><a href="commission_cal2.php">เครื่องคิดเลขคำนวณค่าคอมฯ</a></li>
+                                                <li><a href="howtoopenacc_ac.php">วิธีการเปิด / เอกสารที่ต้องใช้</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Credit Balance <i class="fa  fa-caret-right pull-right"></i></a>
+                                            <ul class="sidebar-submenu menu-open">
+                                                <li><a href="ours_CreditBalance.php">Commision เทียบกับตลาด</a></li>
+                                                <li><a href="https://www.sbito.co.th/Margin/Views/Margin/Marginstock.aspx">Marginable Stock List</a></li>
+                                                <li><a href="commission_cal3.php">เครื่องคิดเลขคำนวณค่าคอมฯ</a></li>
+                                                <li><a href="howtoopenacc_creditb.php">วิธีการเปิด / เอกสารที่ต้องใช้</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span>อนุพันธ์</span>
+                                        <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="productforservices.php">สินค้าที่ขาย</a>
+
+                                        <li><a href="../../index.php">Commission เทียบกับตลาด / อัตราหลักประกัน</a>
+                                        <li><a href="howtoopenacc_2.php">วิธีการเปิด / เอกสารที่ต้องใช้</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>กองทุน</span>
+                                        <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="whyopenfund.php">ทำไมต้องเปิดกองทุนกับ SBITO</a></li>
+
+                                        <li><a href="fundproduct.php">มีกองทุนอะไรบ้าง</a>
+                                        <li><a href="howtoopenacc_fund.php">วิธีการเปิด / เอกสารที่ต้องใช้</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>เทรดต่างประเทศ</span>
+                                        <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="#">Commision เทียบกับตลาด</a></li>
+
+
+                                        <li><a href="../../index.php">ข้อดี เทียบกับตลาด</a>
+                                        <li><a href="../../index.php">วิธีการเปิด / เอกสารที่ต้องใช้</a>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>เครื่องมือการลงุทน </span> <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="https://www.sbito.co.th/upload/Manual_1508903616_91646.pdf">Streaming</a></li>
+                                        <li><a href="https://www.sbito.co.th/sbitradeai/default.aspx">SBITrade AI</a></li>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                            <div class="open_sidebar mt-5">
+                                <img src="images/open_sidebar.png" alt="">
+                            </div>
+
+                        </section>
+                        <section class="d-block d-md-none">
+                            <ul class="sidebar-menu sidebar-menumb">
+                             
+                                <li>
+                                    <a href="#">
+                                        <span>Commission เทียบกับตลาด</span>
+                                        <i class="fas fa-bars"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="ours_CashBalance.php" > Commission เทียบกับตลาด</a>
+                                            <a href="commission_cal1.php"> เครื่องคิดเลขคำนวณค่าคอมฯ </a>
+                                            <a href="howtoopenacc.php"> วิธีการเปิด / เอกสารที่ต้องใช้</a>
+                                          
+                                        </li>
+                                      
+                                    </ul>
+                                </li>
+
+                      
+
+                            </ul>
+                            <div class="open_sidebar mt-5 d-none d-md-block">
+                                <img src="images/open_sidebar.png" alt="">
+                            </div>
+
+                        </section>
+                    </div>
+                    <div class="col-xl-9 col-md-9 col-sm-9">
+                        <div class="head_ourservice d-none d-md-block">
+                            <h1>
+                                Commission เทียบกับตลาด
+                            </h1>
+                        </div>
+                        <div class="ourservice_detail">
+                            <div class="ourdetail_head1">
+                                <h1>บัญชี Cash Balance</h1>
+                                <h3>อัตราค่าคอมมิชชั่น</h3>
+                            </div>
+                            <div class="tb_commission">
+                                <table class="table table-striped" border="1" cellspacing="5" cellpadding="5"
+                                    style="text-align: center;">
+                                    <thead>
+                                        <tr>
+                                            <th style="" rowspan="3">มูลค่าการซื้อขายต่อวัน
+                                                (ล้านบาท)</th>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 253px;" colspan="2">ส่งคำสั่งเองผ่าน Streaming</th>
+                                            <th style="  background-color: rgba(0, 0, 0, 0.4);" rowspan="2">ผ่านเจ้าหน้าที่การตลาด [%]</th>
+                                        </tr>
+                                        <tr>
+                                            <th style="  background-color: rgba(0, 0, 0, 0.4);"> SBITO</th>
+                                            <th style=""> ทั่วไป</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        <tr>
+                                            <td style=""> 0 < = 5</td> 
+                                            <td style="">0.075%</td>
+                                            <td style="">0.150%</td>
+                                            <td style="">0.250%</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="">5 < = 10</td> 
+                                            <td style=""> 0.065%</td>
+                                            <td style="">0.130%</td>
+                                            <td style="">0.220%</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="">10 < = 20</td> <td style="">
+                                                    0.055%</td>
+                                            <td style="">0.110%</td>
+                                            <td style="">0.180%</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style=""> > 20</td>
+                                            <td style="">0.020%</td>
+                                            <td style="">0.100%</td>
+                                            <td style="">0.150%</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="">ค่าธรรมเนียมขั้นต่ำต่อวัน</td>
+                                            <td style="" >ไม่มี</td>
+                                            <td style="" >ไม่มี</td>
+                                            <td style="">50 บาท</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <div class="remark_our mb-5">
+                                <h4>
+                                    หมายเหตุ
+                                </h4>
+                                <ul>
+                                    <li>
+                                        ค่าธรรมเนียมนี้ยังไม่รวม *ค่าธรรมเนียมตลาด 0.005% ,
+                                        ค่าชำระราคาและส่งมอบหลักทรัพย์ 0.001%, ค่าธรรมเนียมการกำกับดูแล 0.001% และ Vat
+                                        7%
+                                    </li>
+                                    <li>
+                                        การคิดคำนวนค่าธรรมเนียมในแต่ละมูลค่าการเทรด ตัวอย่าง เช่น
+                                        ถ้ามูลค่าการเทรดของลูกค้าต่อวัน คือ 8 ล้านบาท ค่าธรรมเนียมในการเทรดหุ้น ของ 5
+                                        ล้านบาทแรก ถูกคิดในอัตรา 0.075% ส่วนที่เหลือ 3 ล้านบาท จะถูกคิดในอัตรา 0.065%
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="ourdetail_head">
+                                <h3>ค่าธรรมเนียมอื่นๆ</h3>
+                            </div>
+                            <div class="tb_fax mt-3">
+                                <table class="table" style="border-top:thick solid #005ea1;font-size:24px;">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="col"><span>การขอออกใบหลักทรัพย์</span></th>
+                                            <th scope="col"><span>300 บาท / ใบหุ้น</span></th>
+
+                                        </tr>
+                                        <tr>
+                                            <td><span
+                                            ><span>โอนหลักทรัพย์ไปบริษัทหลักทรัพย์อื่น</span></span>
+                                            </td>
+                                            <td><span>100 บาท / หลักทรัพย์</span></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><span
+                                            ><span>ออกเอกสารย้อนหลังทุกประเภท</span></span>
+                                            </td>
+                                            <td><span>100 บาท / รายการ</span></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><spa><span>เปลี่ยนสถานะหลักทรัพย์(Local เป็น
+                                                        NVDR หรือ NDVR เป็น Local)</span></spa></td>
+                                            <td><span>50 บาท / รายการ</span></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><span
+                                            ><span>ขอเอกสารยืนยันสถานะบัญชี</span></span>
+                                            </td>
+                                            <td><span>100 บาท / รายการ</span></td>
+
+                                        </tr>
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="ourdetail_head">
+                                <h3>อัตราดอกเบี้ย</h3>
+                                
+                            </div>
+                            <div class="tb_fax mt-3">
+                                <table class="table" style="border-top:thick solid #005ea1;font-size:24px;">
+                                    <tbody>
+                              
+                                         
+                                        <tr>
+                                            <td style="width: 73%;"><spa><span>อัตราดอกเบี้ยเงินฝาก</span></spa>
+                                            </td>
+                                            <td><span>ไม่มี</span></td>
+
+                                        </tr>
+                                       
+                                    </tbody>
+                                    
+                                </table>
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container-md">
+                <div class="row">
+                    <div class="col-lg-3 foot-left">
+                        <img src="images/SBITO-all-logo_ขาว.png" alt="">
+                        <p class="mt-2">
+                            SBI Thai Online Securities Co., Ltd. <br>
+                            1768 Thai Summit Tower 31st Fl.,
+                            New Petchburi Rd.,Bangkapi,Huaykwang,
+                            Bkk 10310 Thailand
+                        </p>
+                    </div>
+                    <div class="col-lg-3 foot-center">
+                        <p class="p-center">ติดต่อสอบถาม</p>
+                        <p class="p-center1">ลูกค้าสัมพันธ์
+                        </p>
+                        <h2 class="p-center2"><a href="tel:02-022-1499">02 022 1499</a></h2>
+                        <h2 class="p-center2"><a href="tel:02-112-1499">02 112 1499</a> </h2>
+                        <p class="p-center3"><a href="mailto:support@sbito.co.th"> support@sbito.co.th</a>
+                           
+                        </p>
+                    </div>
+                    <div class="col-lg-3 foot-center2">
+                        <p class="">SOCIAL NETWORK</p>
+                        <div class="social_icon">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <img src="images/Footer icon-01.png" width="35" alt="">
+                                        <img src="images/Footer icon-02.png" width="35" alt="">
+                                        <img src="images/Footer icon-03.png" width="35" alt="">
+                                        <img src="images/Footer icon-04.png" width="35" alt="">
+                                        <img src="images/Footer icon-05.png" width="35" alt="">
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col-sm">
+                                        <img class="mt-lg-2 dbd_mb" src="images/DBD.png" alt="">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 foot-right">
+                        <p class="d-none d-md-block">ดาวน์โหลดแอปพลิเคชั่น</p>
+                        <div class="row">
+                            <div class="col col-md-4 pull-xs-right">
+                                <img src="images/footer_icon_18.png" class="d-none d-md-block" width="80" alt="">
+
+                                <img src="images/Appstore.png" width="80" alt="">
+
+
+                            </div>
+                            <div class="col pull-xs-left">
+                                <img src="images/footer_icon_18.png" class="d-none d-md-block" width="80" alt="">
+
+                                <img src="images/Googlrplay.png" width="80" alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>

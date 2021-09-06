@@ -1,0 +1,123 @@
+@model MvcMovie.Models.Announcement
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<body>
+<div class="wrapper">
+   <div class="jumbotron jumbotron-fluid banner-page " style="">
+            <img class="" src="~/images/banner_mini.png" alt="">
+            <div class="container">
+                <h1 class="display-4">ข่าวสารและโปรโมชั่น</h1>
+                <p class="lead">NEWS AND PROMOTION</p>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modaltool3" tabindex="-1" role="dialog" aria-labelledby="modaltool3Label"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modaltool3Label">คำนวณค่าคอมมิชชั่น</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div role="form" class="form-container cal_detail mt-3">
+
+                            <p>ซื้อ/ขายหุ้น (บาท)</p>
+                            <!--<input id="txtBuy" type="text" onchange="calCommision();" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');this.onchange();" />-->
+                            <input id="txtBuy" type="text" class="number"><br><br>
+
+                            <label style="font-size:94.5%">ค่าคอมมิชชั่น *</label><br>
+                            <label><span id="lblCom"></span></label><br>
+
+
+                            <label style="font-size:94.5%">
+
+                                ค่าธรรมเนียมตลาดฯ และ กำกับดูแล (0.007%)
+                            </label><br>
+                            <label><span id="lblFee"></span></label><br>
+
+                            <label style="font-size:94.5%">
+                                <label style="font-size:94.5%">ภาษีมูลค่าเพิ่ม (7%)</label>
+
+                            </label><br>
+                            <label><span id="lblTax"></span></label><br>
+
+                            <label><span id="lblSum"></span></label><br>
+                            <label><span style="color:red;font-size:94.5%">*ค่าคอมมิชชั่นที่ใช้คำนวณ
+                                    เป็นค่าคอมมิชชั่นของบัญชีประเภท Cash Balance และ Credit Balance</span></label>
+                            <div class="btn-footer">
+                                <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="promotion mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-3 col-sm-3">
+                        <section>
+                            <ul class="sidebar-menu mt-5 mt-sm-0">
+                                <li class="active">
+                                     <a asp-controller="Home" asp-action="Service">โปรโมชั่น</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>News from SBITO </span> <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="#">ประกาศและข่าวสาร
+                                            </a></li>
+                                        <li><a href="#"> Turnover and Caution report</a>
+                                        </li>
+                                        <li><a href="xr.php"> XR / Warrant / Tender</a></li>
+                                         <li><a  asp-controller="Seminar" asp-action="Index"> สัมมนา</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="newsfromsettfex.php">Stock exchange and
+                                        organization </a>
+                                </li>
+                                <li>
+                                       <a  asp-controller="Career" asp-action="Index">PR NEWS</a>
+                                </li>
+
+                            </ul>
+                            <div class="open_sidebar mt-5 d-none d-sm-block">
+                                <img src="~/images/open_sidebar.png" alt="">
+                            </div>
+
+                        </section>
+
+                    </div>
+                    <div class="col-xl-9 col-md-9 col-sm-9">
+                        <div class="head_promotion">
+                            <h1>
+                                   @Html.DisplayFor(model => model.title_th)
+                            </h1>
+                        </div>
+                        <div class="promotion_detail mt-5">
+                            </p>
+                        </div>
+                          <div class="promotion_detail mt-5">
+                          <h1>
+                                   @Html.Raw(Model.textedit_th)
+                            </h1>
+                               <img src="https://ecadigital-lab.com/@Html.DisplayFor(Model => Model.image_th)" style="width: 100% !important;">
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+</body>

@@ -1,0 +1,116 @@
+@{
+ViewData["Title"] = "เกี่ยวกับเรา";
+}
+<h1>@ViewData["Title"]</h1>
+<body>
+<div class="wrapper">
+        <div class="jumbotron jumbotron-fluid banner-openacc " style="">
+            <img class="d-none d-md-block" src="~/images/requestonline.png" alt="">
+            <div class="container">
+                <h1 class="display-4">ตรวจสอบ
+                </h1>
+                <h2>สถานะการเปิดบัญชี</h2>
+            </div>
+        </div>
+        </div>
+         <div class="openacc">
+            <section class="why-sbito mt-5 mb-5">
+                <div class="head-sbito2">
+                    <div class="lineleft"></div>
+                    <h2>กรอกข้อมูล <br>
+                        เพื่อค้นหาใบสมัคร</h2>
+                </div>
+                <div class="requestdetail mt-5">
+                      <div class="container ">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="" style="color: #0f609f; width: 100%;">กรุณากรอกเบอร์โทรศัพท์</label>
+                            <div class="input-group input-group-lg">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-lg">
+                                        <img src="images/call.png" alt="">
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control form-call" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-lg">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <label for="" style="color: #646464;">กรุณากรอกเลขที่บัตรประชาชน</label>
+                            <div class="input-group input-group-lg">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-lg">
+                                        <img src="~/images/idcard.png" alt="">
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control form-idcard" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="mt-5 pull-right">
+                                <button class="btn btn-rednext">ตรวจสอบ</button>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="mt-5 ml-3">
+                                <button class="btn btn-bluenext">ยกเลิก</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+        </div>
+      
+        <div class="modal fade" id="modaltool3" tabindex="-1" role="dialog" aria-labelledby="modaltool3Label"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modaltool3Label">คำนวณค่าคอมมิชชั่น</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div role="form" class="form-container cal_detail mt-3">
+
+                            <p>ซื้อ/ขายหุ้น (บาท)</p>
+                            <!--<input id="txtBuy" type="text" onchange="calCommision();" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');this.onchange();" />-->
+                            <input id="txtBuy" type="text" class="number"><br><br>
+
+                            <label style="font-size:94.5%">ค่าคอมมิชชั่น *</label><br>
+                            <label><span id="lblCom"></span></label><br>
+
+
+                            <label style="font-size:94.5%">
+
+                                ค่าธรรมเนียมตลาดฯ และ กำกับดูแล (0.007%)
+                            </label><br>
+                            <label><span id="lblFee"></span></label><br>
+
+                            <label style="font-size:94.5%">
+                                <label style="font-size:94.5%">ภาษีมูลค่าเพิ่ม (7%)</label>
+
+                            </label><br>
+                            <label><span id="lblTax"></span></label><br>
+
+                            <label><span id="lblSum"></span></label><br>
+                            <label><span style="color:red;font-size:94.5%">*ค่าคอมมิชชั่นที่ใช้คำนวณ
+                                    เป็นค่าคอมมิชชั่นของบัญชีประเภท Cash Balance และ Credit Balance</span></label>
+                            <div class="btn-footer">
+                                <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+</body>

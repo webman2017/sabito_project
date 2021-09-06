@@ -1,0 +1,270 @@
+@model MvcMovie.Models.InvestingTools
+@{
+    var myModel2=(IEnumerable<MvcMovie.Models.CategoryAccountGroup>)ViewData["MyData"];
+    var myModel22=(IEnumerable<MvcMovie.Models.Derivatives>)ViewData["MyData2"];
+    var Fund=(IEnumerable<MvcMovie.Models.Fund>)ViewData["Fund"];
+    var ForeignTrade=(IEnumerable<MvcMovie.Models.ForeignTrade>)ViewData["ForeignTrade"];
+    var InvestingTools=(IEnumerable<MvcMovie.Models.InvestingTools>)ViewData["InvestingTools"];
+    var items = (IEnumerable<MvcMovie.Models.CategoryAccountItem>)ViewData["item"];
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Service</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/customs.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
+    <link rel="stylesheet" href="~/fonts/stylesheet.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="~/css/splide.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="https://kit.fontawesome.com/48956afbda.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="wrapper"> 
+        <div class="jumbotron jumbotron-fluid banner-page " style="">
+            <img class="d-none d-md-block" src="~/images/banner_mini.png" alt="">
+            <img class="d-block d-md-none" src="~/images/mb_ourservice.png" alt="">
+            <div class="container">
+                @if(ViewBag.data=="th"){
+    <h1 class="display-4">สินค้าและบริการ</h1>
+    <p class="lead">PRODUCT AND SERVICES</p>
+                }else if(ViewBag.data=="en"){
+       <h1 class="display-4">PRODUCT AND SERVICES</h1>
+                <p class="lead">PRODUCT AND SERVICES</p>
+                }else if(ViewBag.name=="jp"){
+    <h1 class="display-4">サービス概要</h1>
+                <p class="lead"></p>
+                }
+             
+            </div>
+        </div>
+
+       
+        <div class="modal fade" id="modaltool3" tabindex="-1" role="dialog" aria-labelledby="modaltool3Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modaltool3Label">คำนวณค่าคอมมิชชั่น</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div role="form" class="form-container cal_detail mt-3">
+                                              
+                        <p>ซื้อ/ขายหุ้น (บาท)</p>
+                        <!--<input id="txtBuy" type="text" onchange="calCommision();" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');this.onchange();" />-->
+                        <input id="txtBuy" type="text" class="number"><br><br>
+                
+                        <label style="font-size:94.5%">ค่าคอมมิชชั่น *</label><br>
+                        <label><span id="lblCom"></span></label><br>
+                
+                
+                        <label style="font-size:94.5%">
+                
+                            ค่าธรรมเนียมตลาดฯ และ กำกับดูแล (0.007%)
+                        </label><br>
+                        <label><span id="lblFee"></span></label><br>
+                
+                        <label style="font-size:94.5%">
+                            <label style="font-size:94.5%">ภาษีมูลค่าเพิ่ม (7%)</label>
+                
+                        </label><br>
+                        <label><span id="lblTax"></span></label><br>
+                
+                        <label><span id="lblSum"></span></label><br>
+                        <label><span style="color:red;font-size:94.5%">*ค่าคอมมิชชั่นที่ใช้คำนวณ เป็นค่าคอมมิชชั่นของบัญชีประเภท Cash Balance และ Credit Balance</span></label>
+                      <div class="btn-footer">
+                        <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+
+                      </div>
+                
+                    </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        <div class="ourservice mb-5">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-xl-3 col-md-3 col-sm-3">
+                        <section class="d-none d-md-block">
+                            <ul class="sidebar-menu">
+                                <li>
+                                    <a href="#">
+                                        <span>หุ้น</span>
+                                        <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+@if(ViewBag.data=="th"){
+    @foreach (var item in myModel2) {
+                                            <li>
+                                    <a href="#">@Html.DisplayFor(modelItem => item.title_th)<i class="fa  fa-caret-right pull-right"></i></a>
+                                           
+                                           <ul class="sidebar-submenu menu-open">
+                                                        @foreach (var items in items)
+                                                        {
+                                                         if(item.id==items.group){
+                                   <li><a asp-action="Details" asp-route-id="@items.id">@Html.DisplayFor(modelItem => items.title_th)</a></li>
+}
+}    
+                                            </ul>
+                                            </li>
+                                    }  
+}else if(ViewBag.data=="en"){
+        @foreach (var item in myModel2) {
+                                            <li>
+                                    <a href="#">@Html.DisplayFor(modelItem => item.title_en)<i class="fa  fa-caret-right pull-right"></i></a>
+                                           
+                                           <ul class="sidebar-submenu menu-open">
+                                                                                                  @foreach (var items in items)
+                                                        {
+                                                         if(item.id==items.group){
+                   <li><a href="ours_CashBalance.php">@Html.DisplayFor(modelItem => items.title_en)</a></li>
+}
+                                                                                                              }
+                                            </ul>
+                                            </li>
+                                    }  
+}else if(ViewBag.data=="jp"){
+        @foreach (var item in myModel2) {
+                                            <li>
+                                    <a href="#">@Html.DisplayFor(modelItem => item.title_jp)<i class="fa  fa-caret-right pull-right"></i></a>
+                                           
+                                           <ul class="sidebar-submenu menu-open">
+                                                                                                 @foreach (var items in items)
+                                                        {
+                                                         if(item.id==items.group){
+                   <li><a href="ours_CashBalance.php">@Html.DisplayFor(modelItem => items.title_jp)</a></li>
+}
+                                                                                                              }
+                                            </ul>
+                                            </li>
+                                    }  
+}    
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>อนุพันธ์</span>
+                                        <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+
+                                @foreach (var item in myModel22) {
+                                        <li class="active">
+                                <a asp-action="Derivatives" asp-route-id="@item.id">@Html.DisplayFor(modelItem => item.title_th)</a>
+                                        </li>
+                                }
+                                    </ul>
+                                </li>
+                                <li >
+                                    <a href="#">
+                                        <span>กองทุน</span>
+                                        <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+
+  @foreach (var item in Fund) {
+                                        <li class="active">
+                                  <a asp-action="Fund" asp-route-id="@item.id">@Html.DisplayFor(modelItem => item.title_th)</a>
+                                        </li>
+                                }
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>เทรดต่างประเทศ</span>
+                                        <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+  @foreach (var item in ForeignTrade) {
+                                        <li class="active">
+                                      <a href="https://www.sbito.co.th/sbitradeusa/">@Html.DisplayFor(modelItem => item.title_th)</a>
+                                        </li>
+                                }
+                                    </ul>
+                                </li>
+                                <li class="active">
+                                    <a href="#">
+                                        <span>เครื่องมือการลงุทน </span> <i class="fa  fa-caret-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+  @foreach (var item in InvestingTools) {
+                                        <li class="active">
+                                   <a href="@Html.DisplayFor(modelItem => item.textedit_th)">@Html.DisplayFor(modelItem => item.title_th)</a>
+                                        </li>
+                                }
+
+                                        @* <li><a href="https://www.sbito.co.th/upload/Manual_1508903616_91646.pdf">Streaming</a></li>
+                                        <li><a href="https://www.sbito.co.th/sbitradeai/default.aspx">SBITrade AI</a></li> *@
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="open_sidebar mt-5">
+                                <img src="images/open_sidebar.png" alt="">
+                            </div>
+                        </section>
+                        <section class="d-block d-md-none">
+                            <ul class="sidebar-menu sidebar-menumb">
+                                <li>
+                                    <a href="#">
+                                        <span>Commission เทียบกับตลาด</span>
+                                        <i class="fas fa-bars"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href=#" > Commission เทียบกับตลาด</a>
+                                            <a href="#"> เครื่องคิดเลขคำนวณค่าคอมฯ </a>
+                                            <a href="#"> วิธีการเปิด / เอกสารที่ต้องใช้</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="open_sidebar mt-5 d-none d-md-block">
+                                <img src="images/open_sidebar.png" alt="">
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-xl-9 col-md-9 col-sm-9">
+                        <div class="head_ourservice d-none d-md-block">
+                            <h1>
+  @Html.Raw(Model.title_th)
+                            </h1>
+                          
+                        </div>
+                        <div class="ourservice_detail">
+                    
+                               @Html.Raw(Model.textedit_th)
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    <!-- wrapper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/calculatecommission.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+    </script>
+    <script src="~/js/slick.js"></script>
+    <script src="~/js/sidebar.js"></script>
+    <script>
+        $.sidebarMenu($('.sidebar-menu'))
+    </script>
+    <script>
+        $.sidebarMenumb($('.sidebar-menu'))
+    </script>
+ 
+   
+</body>
+
+</html>

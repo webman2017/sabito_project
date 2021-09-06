@@ -1,0 +1,339 @@
+@{
+ViewData["Title"] = "เกี่ยวกับเรา";
+}
+
+@{
+   var AboutUs=(IEnumerable<MvcMovie.Models.AboutUs>)ViewData["AboutUs"];
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Service</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/customs.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="fonts/stylesheet.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/splide.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="https://kit.fontawesome.com/48956afbda.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrapper">
+ <div class="jumbotron jumbotron-fluid banner-page " style="">
+            <img class="" src="~/images/bg-about.png" alt="">
+            <div class="container">
+                @if(ViewBag.data=="th"){
+ <h1 class="display-4">เกี่ยวกับเรา</h1>
+                <p class="lead pd">ABOUT US</p>
+                }else if(ViewBag.data=="en"){
+                   <h1 class="display-4">ABOUT US</h1>
+                <p class="lead pd">ABOUT US</p> 
+                }else if(ViewBag.data=="jp"){
+ <h1 class="display-4">私たちに関しては</h1>
+                }
+
+                
+               
+               
+            </div>
+        </div>
+        
+        <div class="modal fade" id="modaltool3" tabindex="-1" role="dialog" aria-labelledby="modaltool3Label"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modaltool3Label">คำนวณค่าคอมมิชชั่น</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div role="form" class="form-container cal_detail mt-3">
+
+                            <p>ซื้อ/ขายหุ้น (บาท)</p>
+                            <!--<input id="txtBuy" type="text" onchange="calCommision();" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');this.onchange();" />-->
+                            <input id="txtBuy" type="text" class="number"><br><br>
+
+                            <label style="font-size:94.5%">ค่าคอมมิชชั่น *</label><br>
+                            <label><span id="lblCom"></span></label><br>
+
+
+                            <label style="font-size:94.5%">
+
+                                ค่าธรรมเนียมตลาดฯ และ กำกับดูแล (0.007%)
+                            </label><br>
+                            <label><span id="lblFee"></span></label><br>
+
+                            <label style="font-size:94.5%">
+                                <label style="font-size:94.5%">ภาษีมูลค่าเพิ่ม (7%)</label>
+
+                            </label><br>
+                            <label><span id="lblTax"></span></label><br>
+
+                            <label><span id="lblSum"></span></label><br>
+                            <label><span style="color:red;font-size:94.5%">*ค่าคอมมิชชั่นที่ใช้คำนวณ
+                                    เป็นค่าคอมมิชชั่นของบัญชีประเภท Cash Balance และ Credit Balance</span></label>
+                            <div class="btn-footer">
+                                <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="promotion mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-3 col-sm-3">
+                        <section>
+                        <ul class="sidebar-menu mt-5 mt-sm-0">
+
+@if(ViewBag.data=="th"){
+
+
+                               @foreach (var item in AboutUs) {
+                                    <li>
+                                   
+                                    <a asp-controller="AboutUs" asp-action="Details"  asp-route-id="@item.id">
+                                        <span>@Html.DisplayFor(modelItem => item.title_th)</span> 
+                                    </a>
+                        
+                                </li>
+                                         }
+}else if(ViewBag.data=="en"){
+  @foreach (var item in AboutUs) {
+                                    <li>
+                                   
+                                    <a asp-controller="AboutUs" asp-action="Details"  asp-route-id="@item.id">
+                                        <span>@Html.DisplayFor(modelItem => item.title_en)</span> 
+                                    </a>
+                        
+                                </li>
+                                         }
+}else if(ViewBag.data=="jp"){
+      @foreach (var item in AboutUs) {
+                                    <li>
+                                   
+                                    <a asp-controller="AboutUs" asp-action="Details"  asp-route-id="@item.id">
+                                        <span>@Html.DisplayFor(modelItem => item.title_jp)</span> 
+                                    </a>
+                        
+                                </li>
+                                         }
+
+}
+                            </ul>
+                            <div class="open_sidebar mt-5 d-none d-sm-block">
+                                <img src="~/images/open_sidebar.png" alt="">
+                            </div>
+
+                        </section>
+
+                    </div>
+                    <div class="col-xl-9 col-md-9 col-sm-9 h">
+                        <div class="head_promotion">
+                            @if(ViewBag.data=="th"){
+                            <h1>เกี่ยวกับ SBI Group</h1>  
+                             } else if (ViewBag.data == "en"){
+                                    <h1>SBI Group</h1>
+                            } else if(ViewBag.data == "jp"){
+                                 <h1>SBI Group</h1>
+                            }                      
+                        </div>
+                        <div class="cont-ab">
+                            <h2>SBI Group</h2>
+                                <div class="cont-ab-dp">
+                            <ul>
+                                <li>
+                                    <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <linearGradient>
+                                                <pattern id="img1" patternUnits="userSpaceOnUse" width="100" height="100">
+                                                    <image xlink:href="images/sbi-gg.png" x="-25" width="150" height="100" />
+                                                </pattern>
+                                            </linearGradient>
+                                        </defs>
+                                        <polygon id="hex" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#img1)" />
+                                    </svg>
+                                    <div class="cont-plg-head">SBI Group</div>
+                                    <div class="cont-plg-in">“SBI” is an acronym for<br>“Strategic Business Innovator.<br>”Focusing on “Customer centric    principle.”</div>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <linearGradient>
+                                                <pattern id="img2" patternUnits="userSpaceOnUse" width="100" height="100">
+                                                    <image xlink:href="images/financ.png" x="-25" width="150" height="100" />
+                                                </pattern>
+                                            </linearGradient>
+                                        </defs>
+                                        <polygon id="hex" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#img2)" />
+                                    </svg>
+                                    <div class="cont-plg-head">Financial<br>Services Bussiness</div>
+                                    <div class="cont-plg-in">Provision of innovative,<br> highly convenient financial products<br> and services via theinvestment.</div>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <linearGradient>
+                                                <pattern id="img3" patternUnits="userSpaceOnUse" width="100" height="100">
+                                                    <image xlink:href="images/assetM.png" x="-25" width="150" height="100" />
+                                                </pattern>
+                                            </linearGradient>
+                                        </defs>
+                                        <polygon id="hex" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#img3)" />
+                                    </svg>
+                                    <div class="cont-plg-head">Asset Management<br>Business</div>
+                                    <div class="cont-plg-in">Investment in startup companies in Japan<br>and abroad in fields including IT and<br>asset management related services.</div>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <linearGradient>
+                                                <pattern id="img4" patternUnits="userSpaceOnUse" width="100" height="100">
+                                                    <image xlink:href="images/bio.png" x="-25" width="150" height="100" />
+                                                </pattern>
+                                            </linearGradient>
+                                        </defs>
+                                        <polygon id="hex" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#img4)" />
+                                    </svg>
+                                    <div class="cont-plg-head">Biotechnology Business</div>
+                                    <div class="cont-plg-in">Research and Development <br>manufacture and<br> sales of pharmaceuticals.</div>
+                                </li>
+                            </ul>
+                        </div>   
+                    </div>
+                    <div class="row cont-ab2">
+                        <div class="col-xl-4 col-md-4 col-sm-4 box-1 none-pad">
+                             <img class="img-in1" src="~/images/p1.png">
+                             <div><img class="img-box1" src="~/images\SBITO-all-logo_ขาว.png"></div>
+                             <div><img class="img2-box1" src="~/images\img-bx1.png"></div>
+                             <div class="text-box">
+                                 <h3>ซื้อขายหลักทรัพย์</h3>
+                                 <div>SBITO เป็นนายหน้าซื้อขาย<br> หลักทรัพย์และอนุพันธ์</div>
+                            </div>
+                            
+
+                        </div>
+                        <div class="col-xl-4 col-md-4 col-sm-4 box-2 none-pad">
+                            <img class="img-in2" src="~/images/p2.png">
+                            <div><img class="img-box2" src="~/images/jpan.png"></div>
+                            <div class="text-box2">
+                                <h3>จากประเทศญี่ปุ่น</h3>
+                                <div>โบรกเกอร์จากประเทศญี่ปุ่นด้วยส่วนแบ่งทางการตลาด<br>แบบออนไลน์อันดับ 1 ในประเทศญี่ปุ่น เราพร้อม<br>ที่จะนำเสนอบริการที่มีมาตรฐาน</div>
+                            </div>
+                            <div>
+                                <img  class="img-in2" src="~/images/p3.png">
+                                <div><img class="img2-box2" src="~/images/33.png"></div>
+                                <div class="text-box3">
+                                    <h3>สมาชิกหมายเลข 33</h3>
+                                    <div>SBITO เป็นสมาชิกหมายเลข 33 <br>(บริษัทจดทะเบียนในตลาดหลักทรัพย์)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-4 col-sm-4 box-3">
+                            <img class="img-in2" src="~/images/p4.png">
+                            <div><img class="img-box3" src="~/images/www.png"></div>
+                            <div class="text-box4">
+                                <h3>ออนไลน์ 100%</h3>
+                                <div>ด้วยแพลตฟอร์มออนไลน์ 100% <br>บริการเครื่องมืออำนวยความสะดวก<br> ในการเทรดให้เกิดประสิทธิภาพอย่างสูงสุด</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont-ab3">
+                        <ul>
+                            <li><img src="~/images/G1.png"></li>
+                            <li><img src="~/images/G2.png"></li>
+                            <li><img src="~/images/G3.png"></li>
+                        </ul>
+                    </div>
+                    <h1 class="t-head">THE <span>SBI GROUP</span><br>EXPANDING FROM JAPAN<br>TO THE WORLD</h1>
+                    <!-- <div class="row cont-ab4">
+                        <div class="col-xl-6 col-md-6 col-sm-6 bd-right">
+                        <div class="cont-r pers mg">16.7%</div>
+                        <img  class="minicir1" src="images/minicircle.png">
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6 left">
+                        <img  class="" src="images/cont1.png">
+                        <div>Performance of<br> venture invesments</div>
+                        </div>
+                    </div>
+                    <div class="row cont-ab4 bg">
+                        <div class="col-xl-6 col-md-6 col-sm-6 bd-right">
+                        <img class="" src="images/cont2.png">
+                        <div class="cont-r">Total asset under<br>management</div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6 left">
+                        <div class="pers mg2">355.7 billion</div>
+                        <img class="minicir2" src="images/minicircle.png">
+                        </div>
+                    </div>
+                    <div class="row cont-ab4">
+                        <div class="col-xl-6 col-md-6 col-sm-6 bd-right">
+                        <div class="cont-r pers">21</div>
+                        <img  class="minicir4" src="images/minicircle.png">
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6 left">
+                        <img  class="" src="images/cont3.png">
+                        <div>Countries and regions <br>with overscas offices</div>
+                        </div>
+                    </div>
+                    <div class="row cont-ab4 bg">
+                        <div class="col-xl-6 col-md-6 col-sm-6 bd-right">
+                        <img class="" src="images/cont4.png">
+                        <div class="cont-r">The SBI group <br>customer base</div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6 left">
+                        <div class="pers mg2">25,204</div>
+                        <img class="minicir2" src="images/minicircle.png">
+                        </div>
+                    </div>
+                    <div class="row cont-ab4">
+                        <div class="col-xl-6 col-md-6 col-sm-6 bd-right last">
+                        <div class="cont-r pers">260</div>
+                        <img  class="minicir4" src="images/minicircle.png">
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6 left">
+                        <img  class="" src="images/cont5.png">
+                        <div>Group companies</div>
+                        </div>
+                    </div> -->
+                    <div class="img-v">
+                        <img src="~/images/aboutus-Ver2.png">
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/calculatecommission.js"></script>
+
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+    </script>
+
+    <script src="js/slick.js"></script>
+ 
+
+    <script src="js/sidebar.js"></script>
+    <script>
+        $.sidebarMenu($('.sidebar-menu'))
+    </script>
+    <script>
+        $.sidebarMenumb($('.sidebar-menu'))
+    </script>
+   

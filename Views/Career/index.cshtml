@@ -1,0 +1,236 @@
+@model IEnumerable<MvcMovie.Models.Career>  
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ร่วมงานกับ SBITO</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/customs.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
+    <link rel="stylesheet" href="~/fonts/stylesheet.css" type="text/css" charset="utf-8" />
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="~/css/splide.min.css">
+
+    <script src="https://kit.fontawesome.com/48956afbda.js" crossorigin="anonymous"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper"> 
+   
+    
+        <div class="jumbotron jumbotron-fluid banner-page " style="">
+            <img class="" src="images/bg-about.png" alt="">
+            <div class="container">
+ @if(ViewBag.data=="th"){
+                <h1 class="display-4">ร่วมงานกับ SBITO</h1>
+                <p class="lead pd">CAREER</p>
+ }else if(ViewBag.data=="en"){
+  <h1 class="display-4">CAREER</h1>
+ }else if(ViewBag.data=="jp"){
+      <h1 class="display-4">CAREER</h1>
+ }
+            </div>
+        </div>
+
+        <section class="shortcutkey mt-lg-5">
+            <div class="container-md">
+                <div class="sidebar-tab sidebar-tab1 nohover" id="fixed_cart_icon">
+                    <div>
+                        <a href="requestonline.php">
+                            <img class="icon_side1" src="images/sck_04.png" width="60" alt="">
+                            <img class="icon_side2" src="images/sck_03.png" width="70" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="sidebar-tab2 sidebar-tab" id="fixed_cart_icon">
+                    <div>
+                        <a href="openaccount.php">
+                            <img class="icon_side1" src="images/sck_08_03.png" width="80" alt="">
+                            <img class="icon_side2" src="images/sck_09_03.png" width="60" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="sidebar-tab3 sidebar-tab" id="fixed_cart_icon">
+                    <div data-toggle="modal" data-target="#modaltool3">
+                        <div>
+                            <img class="icon_side1" src="images/sck_06_03.png" width="60" alt="">
+                            <img class="icon_side2" src="images/sck_05_03.png" width="70" alt="">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </section>
+        <div class="modal fade" id="modaltool3" tabindex="-1" role="dialog" aria-labelledby="modaltool3Label"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modaltool3Label">คำนวณค่าคอมมิชชั่น</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div role="form" class="form-container cal_detail mt-3">
+
+                            <p>ซื้อ/ขายหุ้น (บาท)</p>
+                            <!--<input id="txtBuy" type="text" onchange="calCommision();" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');this.onchange();" />-->
+                            <input id="txtBuy" type="text" class="number"><br><br>
+
+                            <label style="font-size:94.5%">ค่าคอมมิชชั่น *</label><br>
+                            <label><span id="lblCom"></span></label><br>
+
+
+                            <label style="font-size:94.5%">
+
+                                ค่าธรรมเนียมตลาดฯ และ กำกับดูแล (0.007%)
+                            </label><br>
+                            <label><span id="lblFee"></span></label><br>
+
+                            <label style="font-size:94.5%">
+                                <label style="font-size:94.5%">ภาษีมูลค่าเพิ่ม (7%)</label>
+
+                            </label><br>
+                            <label><span id="lblTax"></span></label><br>
+
+                            <label><span id="lblSum"></span></label><br>
+                            <label><span style="color:red;font-size:94.5%">*ค่าคอมมิชชั่นที่ใช้คำนวณ
+                                    เป็นค่าคอมมิชชั่นของบัญชีประเภท Cash Balance และ Credit Balance</span></label>
+                            <div class="btn-footer">
+                                <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="promotion mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-3 col-sm-3">
+                        <section>
+                        <ul class="sidebar-menu mt-5 mt-sm-0">
+                                <li>
+                                    <a href="#">
+                                        <span>เกี่ยวกับ SBI Group</span> 
+                                    </a>
+                        
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>ประวัติความเป็นมาของ SBITO</span>
+                                    </a>
+                                </li>
+                               
+                                <li >
+                                    <a asp-controller="AboutUs" asp-action="Index">
+                                        <span>ติดต่อเรา</span>
+                                    </a> 
+                                </li>
+                              
+                                <li>
+                                    <a href="#">
+                                        <span>ผู้บริหาร</span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a  asp-controller="Career" asp-action="Index">
+                                        <span>ร่วมงานกับ SBITO</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="open_sidebar mt-5 d-none d-sm-block">
+                                <img src="images/open_sidebar.png" alt="">
+                            </div>
+
+                        </section>
+
+                    </div>
+                    <div class="col-xl-9 col-md-9 col-sm-9 h">
+                        <div class="head_promotion">
+                             @if(ViewBag.data=="th"){
+                            <h1>ตำแหน่งที่เปิดรับสมัคร</h1>   
+                             }else if (ViewBag.data == "en")
+                            {
+                                 <h1>Vacant Position</h1>
+                             } else if(ViewBag.data == "jp"){
+                                   <h1>Vacant Position</h1>
+                             }                     
+                        </div>
+   @foreach (var item in Model) {
+
+
+                        <div class="head-help" id="active-help_@Html.DisplayFor(modelItem => item.id)">
+                            <img class="cir1" src="images/circleHelp.png">
+                           @Html.DisplayFor(modelItem => item.title_th)
+                                <a type="button"  class="btn btn-plus" onclick="clickPlus(@Html.DisplayFor(modelItem => item.id))"  id="plus_@Html.DisplayFor(modelItem => item.id)" data=@Html.DisplayFor(modelItem => item.id)></a> 
+                        </div>
+
+                                <div class="career" id="career_@Html.DisplayFor(modelItem => item.id)">
+                      
+                         @Html.Raw(item.textedit_th)
+                      
+                       
+                       
+                      
+                      
+                            
+                        </div>
+                   }
+                      
+                   
+                     
+
+                    
+
+                      
+                        </div>
+                        
+                   
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- wrapper -->
+
+  
+
+    <script>
+ 
+        $(document).ready(function(){
+         
+
+$('.btn-plus').click(function(){
+    var id=$(this).attr('data');
+
+clickPlus(id);
+});
+
+    
+
+      function clickPlus(typeID) {
+                $("#career_"+typeID).fadeToggle(200);
+                $("#plus_"+typeID).toggleClass("minus"); 
+                @* $("#active-help_"+typeID+"").toggleClass("none-bg"); *@
+         
+          
+        }
+        });
+    </script>
+    
+</body>
+
+</html>

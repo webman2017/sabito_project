@@ -1,0 +1,197 @@
+
+@model MvcMovie.Models.KnowledgeBaseGroup
+    @{
+    var books=(IEnumerable<MvcMovie.Models.KnowledgeBase>)ViewData["books"];
+  var menu=(IEnumerable<MvcMovie.Models.KnowledgeBaseGroup>)ViewData["menu"];
+     
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREQUENTLY ASKED QUESTION</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/customs.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
+    <link rel="stylesheet" href="~/fonts/stylesheet.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="~/css/splide.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="https://kit.fontawesome.com/48956afbda.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="wrapper"> 
+        <div class="jumbotron jumbotron-fluid banner-page " style="">
+            <img class="" src="~/images/bg-help.png" alt="">
+            <div class="container">
+                 @if (ViewBag.data == "th")
+            {
+                <h1 class="display-4">คำถามที่พบบ่อย</h1>
+                <p class="lead pd6">FREQUENTLY ASKED QUESTIONS</p>
+            }else if(ViewBag.data == "en"){
+                  <h1 class="display-4">FREQUENTLY ASKED QUESTIONS</h1>
+                <p class="lead pd6">FREQUENTLY ASKED QUESTIONS</p>
+            }else if(ViewBag.data == "jp"){
+                  <h1 class="display-4">FREQUENTLY ASKED QUESTIONS</h1>
+                <p class="lead pd6">FREQUENTLY ASKED QUESTIONS</p>
+            }
+                
+            </div>
+        </div>
+      
+        <div class="modal fade" id="modaltool3" tabindex="-1" role="dialog" aria-labelledby="modaltool3Label"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modaltool3Label">คำนวณค่าคอมมิชชั่น</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div role="form" class="form-container cal_detail mt-3">
+
+                            <p>ซื้อ/ขายหุ้น (บาท)</p>
+                            <!--<input id="txtBuy" type="text" onchange="calCommision();" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');this.onchange();" />-->
+                            <input id="txtBuy" type="text" class="number"><br><br>
+
+                            <label style="font-size:94.5%">ค่าคอมมิชชั่น *</label><br>
+                            <label><span id="lblCom"></span></label><br>
+
+
+                            <label style="font-size:94.5%">
+
+                                ค่าธรรมเนียมตลาดฯ และ กำกับดูแล (0.007%)
+                            </label><br>
+                            <label><span id="lblFee"></span></label><br>
+
+                            <label style="font-size:94.5%">
+                                <label style="font-size:94.5%">ภาษีมูลค่าเพิ่ม (7%)</label>
+
+                            </label><br>
+                            <label><span id="lblTax"></span></label><br>
+
+                            <label><span id="lblSum"></span></label><br>
+                            <label><span style="color:red;font-size:94.5%">*ค่าคอมมิชชั่นที่ใช้คำนวณ
+                                    เป็นค่าคอมมิชชั่นของบัญชีประเภท Cash Balance และ Credit Balance</span></label>
+                            <div class="btn-footer">
+                                <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="promotion mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-3 col-sm-3">
+                        <section>
+                            <ul class="sidebar-menu mt-5 mt-sm-0">
+
+ @if (ViewBag.data == "th")
+            {
+
+                                 @foreach (var item in menu) {
+                                <li  id="know_@item.id">
+                                    <a asp-action="Details" asp-route-id="@item.id">
+                                        <span>@Html.DisplayFor(modelItem => item.title_th)</span> 
+                                    </a>
+                                </li>
+                                 }
+            }else if(ViewBag.data == "en"){
+              @foreach (var item in menu) {
+                                <li  id="know_@item.id">
+                                    <a asp-action="Details" asp-route-id="@item.id">
+                                        <span>@Html.DisplayFor(modelItem => item.title_en)</span> 
+                                    </a>
+                                </li>
+                                 }
+            }else if(ViewBag.data == "jp"){
+                   @foreach (var item in menu) {
+                                <li  id="know_@item.id">
+                                    <a asp-action="Details" asp-route-id="@item.id">
+                                        <span>@Html.DisplayFor(modelItem => item.title_jp)</span> 
+                                    </a>
+                                </li>
+                                 }
+            }
+                            </ul>
+                            <div class="open_sidebar mt-5 d-none d-sm-block">
+                                <img src="images/open_sidebar.png" alt="">
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-xl-9 col-md-9 col-sm-9">
+                        <div class="head_promotion">
+                             @if (ViewBag.data == "th")
+            {
+                            <h1>  @Html.DisplayFor(model => model.title_th)</h1>   
+            }else if(ViewBag.data == "en"){
+                  <h1>  @Html.DisplayFor(model => model.title_en)</h1>   
+            } else if(ViewBag.data == "jp"){
+  <h1>  @Html.DisplayFor(model => model.title_jp)</h1>  
+            }                    
+                        </div>
+
+                           @if (ViewBag.data == "th")
+            {
+                        @foreach (var item in books) {
+                        <div class="head-help" id="active-help_@item.id">
+                            <img class="cir1" src="~/images/circleHelp.png">
+                            <a type="button" onclick="clickPlus(@item.id)">@Html.DisplayFor(modelItem => item.title_th)</a>
+                            <a type="button" onclick="clickPlus(@item.id)" class="btn btn-plus"   id="plus_@item.id"></a> 
+                        </div>
+                        <div class="help" id="help_@item.id">
+                        @Html.Raw(item.textedit_th)
+                        </div>
+                       }
+            }else if(ViewBag.data == "en"){
+                  @foreach (var item in books) {
+                        <div class="head-help" id="active-help_@item.id">
+                            <img class="cir1" src="~/images/circleHelp.png">
+                            <a type="button" onclick="clickPlus(@item.id)">@Html.DisplayFor(modelItem => item.title_th)</a>
+                            <a type="button" onclick="clickPlus(@item.id)" class="btn btn-plus"   id="plus_@item.id"></a> 
+                        </div>
+                        <div class="help" id="help_@item.id">
+                        @Html.Raw(item.textedit_th)
+                        </div>
+                       }
+            }else if(ViewBag.data == "jp"){
+ @foreach (var item in books) {
+                        <div class="head-help" id="active-help_@item.id">
+                            <img class="cir1" src="~/images/circleHelp.png">
+                            <a type="button" onclick="clickPlus(@item.id)">@Html.DisplayFor(modelItem => item.title_jp)</a>
+                            <a type="button" onclick="clickPlus(@item.id)" class="btn btn-plus"  id="plus_@item.id"></a> 
+                        </div>
+                        <div class="help" id="help_@item.id">
+                        @Html.Raw(item.textedit_jp)
+                        </div>
+                       }
+            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <!-- wrapper -->
+
+
+    <script>
+    $(document).ready(function(){
+   
+    var url=(window.location).href;
+    var id = url.substring(url.lastIndexOf('/') + 1);
+    @* alert(id); *@
+$('#know_'+id).addClass('active');
+ });
+ </script>
+
+
+</body>
+</html>
